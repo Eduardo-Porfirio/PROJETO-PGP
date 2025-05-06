@@ -35,8 +35,15 @@ services:
       - "5432:5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
+      - ./create_database.sql:/docker-entrypoint-initdb.d/create_database.sql
     networks:
       - app-network
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "${DB_USER}"]
+      interval: 10s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
 
 volumes:
   postgres-data:
