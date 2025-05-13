@@ -1,6 +1,6 @@
 create schema if not exists back;
 
-\c GUIA
+\c mydb
 
 create table if not exists back.gender (
     id serial not null,
