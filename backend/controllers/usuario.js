@@ -4,6 +4,10 @@ const saltRounds = 10;
 import pool from '../banco.js';
 
 function formatarDataParaSQL(dataBr) {
+    console.log("Data recebida:", dataBr);
+    if (/^\d{4}-\d{2}-\d{2}$/.test(dataBr)) { // Se já estiver no formato YYYY-MM-DD, apenas retorne
+      return dataBr;
+    }
     const [dia, mes, ano] = dataBr.split('/');
     return `${ano}-${mes}-${dia}`;
 }
@@ -57,7 +61,7 @@ async function cadastrarUsuario(req, res) {
     }
     const hash = await _hash(req.body.senha, saltRounds);
 
-    const nascimentoSql = formatarDataParaSQL(req.body.nascimento);
+    const nascimentoSql = formatarDataParaSQL(req.body.dataNascimento);
 
     if (req.body)
 
