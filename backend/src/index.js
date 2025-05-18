@@ -16,7 +16,7 @@ app.get('/usuario',(req,res) => usuario.validarLogin(req,res));
 
 app.post('/usuario',(req,res) => usuario.cadastrarUsuario(req,res));
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });

@@ -42,10 +42,24 @@ async function validarLogin(req, res) {
   
 async function cadastrarUsuario(req, res) {
     console.log(req.body); 
+    console.log("TO AQUI");
+    if (req.body.senha !== req.body.confirmarSenha) {
+      console.log('Senhas não conferem');
+      return res.status(400).json({ erro: 'Por Favor escreva novamente a senha' });
+    }
+    const usuarioExistente = await pool.query('SELECT * FROM back.user WHERE email = $1', [req.body.email]);
+    if (usuarioExistente.rows.length > 0) {
+        return res.status(400).json({ erro: 'Email já cadastrado' });
+    }
+    const usuarioExistente2 = await pool.query('SELECT * FROM back.user WHERE cpf_user = $1', [req.body.cpf]); 
+    if (usuarioExistente2.rows.length > 0) {
+        return res.status(400).json({ erro: 'CPF já cadastrado' });
+    }
     const hash = await _hash(req.body.senha, saltRounds);
 
     const nascimentoSql = formatarDataParaSQL(req.body.nascimento);
 
+    if (req.body)
 
     try{
         const result = await pool.query('INSERT INTO back.user(name_user,cellphone,email,password,gender,cpf_user,date_born)values($1,$2,$3,$4,$5,$6,$7);',
