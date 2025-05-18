@@ -8,6 +8,7 @@ export default function RegisterPage() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [username, setUser] = useState('');
+  const [confirmarSenha, setConfirmarSenha] = useState('');
   const [dataNascimento, setDataNascimento] = useState('');
   const [telefone, setTelefone] = useState(''); 
   const [genero, setGenero] = useState('');
@@ -27,7 +28,7 @@ export default function RegisterPage() {
         senha,
         username,
         confirmarSenha,
-        dataNascimento,
+        nascimento: dataNascimento,
         telefone,
         genero
       });

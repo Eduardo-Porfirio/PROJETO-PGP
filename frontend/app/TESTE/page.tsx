@@ -1,6 +1,6 @@
 // app/not-found.tsx
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '@/Components/button'; // ajuste o caminho se necessário
 import axios from 'axios';
 import { compileFunction } from 'vm';
@@ -10,6 +10,12 @@ export default function Cadastro() {
   const [step, setStep] = useState(1);
 
   const [toast, setToast] = useState<{ show: boolean; message: string; type: 'success' | 'error' }>({ show: false, message: '', type: 'success' });
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/genres')
+      .then(res => setGeneros(res.data))
+      .catch(err => console.error('Erro ao buscar gêneros:', err));
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,6 +58,8 @@ export default function Cadastro() {
   const [genero, setGenero] = useState('');
   const [senha, setSenha] = useState('');
   const [confirmarSenha, setConfirmarSenha] = useState('');
+  const [generos, setGeneros] = useState([]); // 1. Estado para os gêneros
+
 
   function formatarCelular(value: string) {
     const numeros = value.replace(/\D/g, "");
@@ -153,45 +161,19 @@ export default function Cadastro() {
                 required
               />
             </div>
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700">
-                Gênero
-              </label>
-              <div className="flex gap-4">
-                <label className="inline-flex items-center">
-                  <input
-                    type="radio"
-                    name="genero"
-                    value="masculino"
-                    checked={genero === "masculino"}
-                    onChange={(e) => setGenero(e.target.value)}
-                    className="form-radio text-blue-600"
-                  />
-                  <span className="ml-2">Masculino</span>
-                </label>
-                <label className="inline-flex items-center">
-                  <input
-                    type="radio"
-                    name="genero"
-                    value="feminino"
-                    checked={genero === "feminino"}
-                    onChange={(e) => setGenero(e.target.value)}
-                    className="form-radio text-pink-500"
-                  />
-                  <span className="ml-2">Feminino</span>
-                </label>
-                <label className="inline-flex items-center">
-                  <input
-                    type="radio"
-                    name="genero"
-                    value="outro"
-                    checked={genero === "outro"}
-                    onChange={(e) => setGenero(e.target.value)}
-                    className="form-radio text-purple-500"
-                  />
-                  <span className="ml-2">Outro</span>
-                </label>
-              </div>
+            <div className="my-4">
+              <label className="block mb-2 font-bold">Gênero</label>
+              <select
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value={genero}
+                onChange={e => setGenero(e.target.value)}
+                required
+              >
+                <option value="">Selecione...</option>
+                {generos.map((g: any) => (
+                  <option key={g.id} value={g.id}>{g.name}</option>
+                ))}
+              </select>
             </div>
             <div className='flex justify-center items-center'>
               <Button type="submit">Próxima etapa</Button>
