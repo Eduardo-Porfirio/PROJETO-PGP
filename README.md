@@ -1,3 +1,15 @@
+# PROJETO-PGP
+
+## Como executar no docker
+
+- Execute os seguintes comandos:
+	```
+		docker-compose build --no-cache
+		docker-compose up
+		## Para stopar os serviços
+		docker-compose down
+	```
+	Certifique-se que os comandos sejam executados na pasta backend
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
