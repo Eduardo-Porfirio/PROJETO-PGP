@@ -1,16 +1,25 @@
 import StickNav from "@/Components/sticknavbar";
 
-export default function name() {
+export default function DashboardPage() {
     return (
-        <main className="min-h-screen flex flex-col bg-white"> 
+        <main>
             <StickNav />
-            <div className="flex-1 flex justify-center items-center px-5 bg-blue-200 p-5">
-                <div className="Container flex justify-center items-center flex-col bg-white w-full h-screen rounded-2xl shadow-lg p-2">
-                    <div className="h-full bg-amber-600 rounded-2xl flex">
-                        <h2 className="font-bold font-serif text-lg">DASHBOARD</h2>
+            {/* Barra de Navegação Fixa */}
+            <div className="min-h-screen bg-gray-100 grid grid-cols-3 md:grid-cols-2 md:grid-rows-2">
+                {/* Conteúdo da Página */}
+                <div className="grid grid-rows-[auto_1fr]">
+                    <div className="h-16 flex items-center justify-center">
+                        <h1 className="text-black text-2xl font-bold">Dashboard</h1>
                     </div>
-                </div> 
+                    <div className="p-4">
+                        <p className="text-gray-700">Bem-vindo ao seu painel de controle!</p>
+                        {/* Adicione mais conteúdo aqui */}
+                    </div>
+                    <div className="bg-gray-200 p-4">
+
+                    </div>
+                </div>
             </div>
         </main>
-    )
+    );
 }

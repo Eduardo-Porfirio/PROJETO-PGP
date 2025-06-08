@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 node_modules
 .env
 a
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-=======
->>>>>>> 90c6d77 (Reestruturando algumas pastas)
 
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 # dependencies

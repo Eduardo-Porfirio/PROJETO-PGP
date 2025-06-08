@@ -25,15 +25,15 @@ export default function Navbar() {
 
   return (
     <nav className="bg-gray-900 text-white sticky top-0 z-50">
-      <div className="max-w-screen-xl mx-auto px-2 py-2 flex ">
+      <div className="px-4 py-2 flex items-center justify-between">
         {/* Logo (Esquerda) */}
         <div className="flex items-center space-x-2">
-          <Image src="/LOGO-GUIAIA.png" alt="Flowbite Logo" width={42} height={39} />
+          <Image src="/LOGO-GUIAIA.png" alt="Icone Guia-Ia" width={42} height={39} />
           <span className="text-xl font-semibold">Guia IA</span>
         </div>
 
         {/* Itens do Menu (Centralizado) */}
-        <div className={`${isMenuOpen ? 'flex' : 'hidden'} md:flex items-center justify-center flex-1 `}>
+        <div  className={`${isMenuOpen ? 'flex' : 'hidden'} md:flex items-center justify-center`}>
           <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 md:flex-row md:space-x-6 md:mt-0">
             <li>
               <Link href="#" className="block py-2 px-3 text-blue-400 hover:text-white">
