@@ -1,6 +1,8 @@
+'use client';
+import React from "react";
 import StickNav from "@/Components/sticknavbar";
 import Button from "@/Components/button";
-
+import { MdOutlineDriveFolderUpload } from "react-icons/md";
 
 export default function CadastroSala() {
     return (
@@ -11,13 +13,29 @@ export default function CadastroSala() {
             <div className="min-h-screen grid grid-rows-1 md:grid-rows-2 md:grid-cols-[1fr_2fr] gap-2 p-2 bg-white">
 
                 {/* DIV A: Linha 1, Coluna 1 */}
-                <div className="bg-blue-300 rounded-lg p-4">
-                    <h2 className="text-xl font-bold text-white">Div A</h2>
-                    <p className="text-white">Metade superior da primeira coluna.</p>
+                <div className="bg-gray-100 rounded-lg p-4 flex flex-col items-center justify-center shadow-md">
+                    <h2 className="text-xl font-bold text-black">Faça uploads dos seus arquivos</h2>
+                    <label className="flex flex-col items-center cursor-pointer">
+                        <MdOutlineDriveFolderUpload className="text-4xl mb-2" />
+                        <span className="text-gray-700 mb-2">Selecionar arquivo</span>
+                        <input
+                            type="file"
+                            className="hidden"
+                            multiple
+                            onChange={(e) => {
+                                const files = e.target.files;
+                                if (files && files.length > 0) {
+                                    // Aqui você pode lidar com o envio dos arquivos
+                                    // Exemplo: enviar para uma API ou salvar no estado
+                                    alert(`${files.length} arquivo(s) selecionado(s)`);
+                                }
+                            }}
+                        />
+                    </label>
                 </div>
 
                 {/* DIV B: Linha 2, Coluna 1 */}
-                <div className="bg-gray-500 rounded-lg p-4 row-span-2 flex">
+                <div className="bg-gray-300 rounded-lg p-4 row-span-2 flex">
                     <div className="flex-1">
                         <h2 className="text-xl font-bold text-white">Div B</h2> 
                     </div>
@@ -31,7 +49,7 @@ export default function CadastroSala() {
                     </div>
                 </div>
                 {/* DIV C (Principal): Coluna 2, expandindo por 2 linhas */}
-                <div className="bg-slate-700 rounded-lg p-4 row-span-1">
+                <div className="bg-gray-300 rounded-lg p-4 row-span-1">
                     <h2 className="text-xl font-bold text-white">Div C (Principal)</h2>
                     <p className="text-white">Esta div ocupa toda a altura e é mais larga.</p>
                 </div>
