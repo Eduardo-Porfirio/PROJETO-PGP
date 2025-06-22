@@ -23,4 +23,31 @@ create table if not exists back.user (
     constraint fk_user_gender foreign key (gender) references back.gender (id)  
 );
 
+
+create table if not exists back.room (
+    id_room bigserial not null,
+    name_room varchar(150),
+    description text,
+    created_at timestamp default current_timestamp,
+    admin_id bigint not null,
+    constraint pk_room primary key (id_room)
+);
+
+create table if not exists back.user_room (
+    id_user bigint not null,
+    id_room bigint not null,
+    joined_at timestamp default current_timestamp,
+    constraint pk_user_room primary key (id_user, id_room)
+);
+
+create table if not exists back.chat_message (
+    id_message bigserial not null,
+    id_room bigint not null,
+    sender_id bigint not null,
+    message_text text,
+    sent_at timestamp default current_timestamp,
+    constraint pk_id_message primary key (id_message)
+);
+
+
 set search_path to back;

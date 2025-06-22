@@ -1,6 +1,7 @@
 import { json } from 'express';
 import express from 'express';
 import usuario from '../controllers/usuario.js';
+import chat from '../controllers/chat.js';
 import cors from 'cors';
 import retrieveInfo from '../controllers/retrieveInfo.js';
 
@@ -22,6 +23,14 @@ app.get('/usuario',(req,res) => usuario.validarLogin(req,res));
 app.post('/usuario',(req,res) => usuario.cadastrarUsuario(req,res));
 //Endpoint para pegar os generos cadastrados
 app.get('/genres',(req,res) => retrieveInfo.getGenres(req,res));
+//Endpoint para criar sala
+app.post('/room',(req,res)=> chat.createRoom(req,res));
+//Endpoint para retornar os usuarios
+app.get('/user_room',(req,res)=> chat.return_user(req,res));
+//Endpoint para retornar as salas de um usuario
+app.get('/rooms',(req,res)=> chat.rooms_user(req,res));
+
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

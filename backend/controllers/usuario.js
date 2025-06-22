@@ -39,7 +39,7 @@ async function validarLogin(req, res, next) {
       return res.status(401).json({ erro: 'Senha incorreta' });
     }
     const token = jwt.sign(
-      { id: usuario.id, email: usuario.email },
+      { id: usuario.id_user, email: usuario.email },
       secret,
       { expiresIn: '1h' }
     );
@@ -47,7 +47,7 @@ async function validarLogin(req, res, next) {
       mensagem: 'Login válido',
       token: token,
       usuario: {
-        id: usuario.id,
+        id: usuario.id_user,
         email: usuario.email
       }
     });
