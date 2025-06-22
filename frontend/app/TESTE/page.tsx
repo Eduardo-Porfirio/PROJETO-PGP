@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import Button from '@/Components/button'; // ajuste o caminho se necessário
 import axios from 'axios';
-import { compileFunction } from 'vm';
 
 export default function Cadastro() {
   // Estado para controlar o passo atual do formulário

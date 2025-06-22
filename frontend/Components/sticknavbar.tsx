@@ -3,12 +3,13 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function Navbar() {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isMenuOpen, setMenuOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-
+  const router = useRouter();
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
@@ -41,14 +42,18 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <Link href="#" className="block py-2 px-3 hover:text-white">
-                About
-              </Link>
+              <button className="block py-2 px-3 hover:text-blue-400"
+                onClick={() => router.push('/Sobre')}
+              >
+                Sobre
+              </button>
             </li>
             <li>
-              <Link href="#" className="block py-2 px-3 hover:text-white">
-                Services
-              </Link>
+              <button className="block py-2 px-3 hover:text-blue-400"
+                onClick={() => router.push('/Servicos')}
+              >
+                Servicos
+              </button>
             </li>
           </ul>
         </div>
@@ -90,16 +95,26 @@ export default function Navbar() {
             </div>
             <ul className="py-2">
               <li>
-                <Link href="#" className="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600">Dashboard</Link>
+                <button
+                  className="block w-full text-left px-4 py-2 text-sm text-gray-200 hover:bg-gray-600"
+                  onClick={() => {router.push('/Dashboard'); setDropdownOpen(false);}}
+                >
+                  Dashboard
+                </button>
+              <li>
+                <button
+                  className="block w-full text-left px-4 py-2 text-sm text-gray-200 hover:bg-gray-600"
+                  onClick={() => {router.push('/CriarSala'); setDropdownOpen(false);}}
+                >
+                  Criar Sala
+                </button>
+              </li>
               </li>
               <li>
-                <Link href="#" className="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600">Settings</Link>
+                <Link href="#" className="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600">Configuracoes</Link>
               </li>
               <li>
-                <Link href="#" className="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600">Earnings</Link>
-              </li>
-              <li>
-                <Link href="#" className="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600">Sign out</Link>
+                <Link href="#" className="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600">Fazer Logout</Link>
               </li>
             </ul>
           </div>

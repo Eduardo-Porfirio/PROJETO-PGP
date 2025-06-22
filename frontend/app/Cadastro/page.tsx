@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 import axios from 'axios';
 
@@ -13,6 +14,8 @@ export default function RegisterPage() {
   const [telefone, setTelefone] = useState(''); 
   const [genero, setGenero] = useState('');
   const [showToast, setShowToast] = useState(false);
+
+  const router = useRouter();
 
   const handleLogin = () => {
     setShowToast(true);
@@ -32,8 +35,13 @@ export default function RegisterPage() {
         telefone,
         genero
       });
-
       console.log(response.data);
+      if (response.status === 200) {
+        console.log('Cadastro realizado com sucesso:', response.data);
+        router.push('/Login'); // Redireciona para a página de login após o cadastro
+      } else {
+        console.error('Erro ao cadastrar:', response.data);
+      }
     } catch (error) {
       console.error('Error:', error);
     }

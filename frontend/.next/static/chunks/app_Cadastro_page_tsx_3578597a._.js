@@ -10,10 +10,12 @@ __turbopack_context__.s({
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/axios/lib/axios.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 'use client';
+;
 ;
 ;
 function RegisterPage() {
@@ -26,6 +28,7 @@ function RegisterPage() {
     const [telefone, setTelefone] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
     const [genero, setGenero] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
     const [showToast, setShowToast] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
     const handleLogin = ()=>{
         setShowToast(true);
         setTimeout(()=>setShowToast(false), 3000);
@@ -43,6 +46,12 @@ function RegisterPage() {
                 genero
             });
             console.log(response.data);
+            if (response.status === 200) {
+                console.log('Cadastro realizado com sucesso:', response.data);
+                router.push('/Login'); // Redireciona para a página de login após o cadastro
+            } else {
+                console.error('Erro ao cadastrar:', response.data);
+            }
         } catch (error) {
             console.error('Error:', error);
         }
@@ -54,14 +63,14 @@ function RegisterPage() {
                 className: "w-full h-10 bg-black"
             }, void 0, false, {
                 fileName: "[project]/app/Cadastro/page.tsx",
-                lineNumber: 43,
+                lineNumber: 51,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "w-full h-2 bg-blue-600"
             }, void 0, false, {
                 fileName: "[project]/app/Cadastro/page.tsx",
-                lineNumber: 44,
+                lineNumber: 52,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -76,12 +85,12 @@ function RegisterPage() {
                                 children: "REGISTAR"
                             }, void 0, false, {
                                 fileName: "[project]/app/Cadastro/page.tsx",
-                                lineNumber: 49,
+                                lineNumber: 57,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/Cadastro/page.tsx",
-                            lineNumber: 48,
+                            lineNumber: 56,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -95,7 +104,7 @@ function RegisterPage() {
                                     onChange: (e)=>setEmail(e.target.value)
                                 }, void 0, false, {
                                     fileName: "[project]/app/Cadastro/page.tsx",
-                                    lineNumber: 53,
+                                    lineNumber: 61,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -106,7 +115,7 @@ function RegisterPage() {
                                     onChange: (e)=>setUser(e.target.value)
                                 }, void 0, false, {
                                     fileName: "[project]/app/Cadastro/page.tsx",
-                                    lineNumber: 60,
+                                    lineNumber: 68,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -117,7 +126,7 @@ function RegisterPage() {
                                     onChange: (e)=>setDataNascimento(e.target.value)
                                 }, void 0, false, {
                                     fileName: "[project]/app/Cadastro/page.tsx",
-                                    lineNumber: 67,
+                                    lineNumber: 75,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -128,7 +137,7 @@ function RegisterPage() {
                                     onChange: (e)=>setTelefone(e.target.value)
                                 }, void 0, false, {
                                     fileName: "[project]/app/Cadastro/page.tsx",
-                                    lineNumber: 74,
+                                    lineNumber: 82,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -139,7 +148,7 @@ function RegisterPage() {
                                     onChange: (e)=>setSenha(e.target.value)
                                 }, void 0, false, {
                                     fileName: "[project]/app/Cadastro/page.tsx",
-                                    lineNumber: 81,
+                                    lineNumber: 89,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -150,7 +159,7 @@ function RegisterPage() {
                                     onChange: (e)=>setSenha(e.target.value)
                                 }, void 0, false, {
                                     fileName: "[project]/app/Cadastro/page.tsx",
-                                    lineNumber: 88,
+                                    lineNumber: 96,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -159,24 +168,24 @@ function RegisterPage() {
                                     children: "Login"
                                 }, void 0, false, {
                                     fileName: "[project]/app/Cadastro/page.tsx",
-                                    lineNumber: 95,
+                                    lineNumber: 103,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/Cadastro/page.tsx",
-                            lineNumber: 52,
+                            lineNumber: 60,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/Cadastro/page.tsx",
-                    lineNumber: 47,
+                    lineNumber: 55,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/Cadastro/page.tsx",
-                lineNumber: 46,
+                lineNumber: 54,
                 columnNumber: 7
             }, this),
             showToast && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -188,7 +197,7 @@ function RegisterPage() {
                                 children: "Email:"
                             }, void 0, false, {
                                 fileName: "[project]/app/Cadastro/page.tsx",
-                                lineNumber: 107,
+                                lineNumber: 115,
                                 columnNumber: 14
                             }, this),
                             " ",
@@ -196,7 +205,7 @@ function RegisterPage() {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/Cadastro/page.tsx",
-                        lineNumber: 107,
+                        lineNumber: 115,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -205,7 +214,7 @@ function RegisterPage() {
                                 children: "Senha:"
                             }, void 0, false, {
                                 fileName: "[project]/app/Cadastro/page.tsx",
-                                lineNumber: 108,
+                                lineNumber: 116,
                                 columnNumber: 14
                             }, this),
                             " ",
@@ -213,23 +222,27 @@ function RegisterPage() {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/Cadastro/page.tsx",
-                        lineNumber: 108,
+                        lineNumber: 116,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/Cadastro/page.tsx",
-                lineNumber: 106,
+                lineNumber: 114,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/Cadastro/page.tsx",
-        lineNumber: 42,
+        lineNumber: 50,
         columnNumber: 5
     }, this);
 }
-_s(RegisterPage, "/u5LreR++0n9LHaiQ0GPRPpy5fw=");
+_s(RegisterPage, "tF/K/gKW/1Cb9Y/czd3e9CRZ/wY=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"]
+    ];
+});
 _c = RegisterPage;
 var _c;
 __turbopack_context__.k.register(_c, "RegisterPage");

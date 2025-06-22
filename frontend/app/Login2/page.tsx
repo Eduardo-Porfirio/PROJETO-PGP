@@ -3,11 +3,13 @@
 import React, { useEffect, useState } from 'react';
 import Button from '@/Components/button'; // ajuste o caminho se necessário
 import axios from 'axios';
-import { compileFunction } from 'vm';
+import { useRouter } from 'next/navigation';
 
 export default function Cadastro() {
   // Estado para controlar o passo atual do formulário
   const [step, setStep] = useState(1);
+
+  const router = useRouter();
 
   const [toast, setToast] = useState<{ show: boolean; message: string; type: 'success' | 'error' }>({ show: false, message: '', type: 'success' });
 
@@ -29,6 +31,11 @@ export default function Cadastro() {
 
       if (response.status === 200) {
         console.log('Login successful:', response.data);
+        setToast({ show: true, message: 'Login realizado com sucesso!', type: 'success' });
+        setTimeout(() => {
+          setToast({ show: false, message: '', type: 'success' });
+          router.push('/Dashboard'); // Redireciona para a página inicial após o login
+        }, 2000);
         // Handle successful login (e.g., redirect to another page)
       } else {
         console.error('Login failed:', response.data);

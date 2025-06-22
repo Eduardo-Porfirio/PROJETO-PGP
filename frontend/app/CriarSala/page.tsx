@@ -35,7 +35,7 @@ export default function CadastroSala() {
                 </div>
 
                 {/* DIV B: Linha 2, Coluna 1 */}
-                <div className="bg-gray-300 rounded-lg p-4 row-span-2 flex">
+                <div className="bg-gray-100 rounded-lg p-4 row-span-2 flex shadow-md">
                     <div className="flex-1">
                         <h2 className="text-xl font-bold text-white">Div B</h2> 
                     </div>
@@ -49,9 +49,9 @@ export default function CadastroSala() {
                     </div>
                 </div>
                 {/* DIV C (Principal): Coluna 2, expandindo por 2 linhas */}
-                <div className="bg-gray-300 rounded-lg p-4 row-span-1">
-                    <h2 className="text-xl font-bold text-white">Div C (Principal)</h2>
-                    <p className="text-white">Esta div ocupa toda a altura e é mais larga.</p>
+                <div className="bg-gray-100 rounded-lg p-4 row-span-1 shadow-md flex flex-col items-center justify-center">
+                    <h2 className="text-xl font-bold text-black">Escolha a atuacao da IA</h2>
+                    <p className="text-black"></p>
                 </div>
             </div>
         </main>
