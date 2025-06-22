@@ -36,7 +36,6 @@ export default function Cadastro() {
           setToast({ show: false, message: '', type: 'success' });
           router.push('/Dashboard'); // Redireciona para a página inicial após o login
         }, 2000);
-        // Handle successful login (e.g., redirect to another page)
       } else {
         console.error('Login failed:', response.data);
       }
@@ -80,7 +79,7 @@ export default function Cadastro() {
                 required
               />
             </div>
-                        <div>
+            <div>
               <label htmlFor="senha" className="block text-sm font-medium text-gray-700">
                 Senha
               </label>
@@ -94,9 +93,24 @@ export default function Cadastro() {
                 required
               />
             </div>
-            <div className='flex justify-center items-center'>
+            <div className='flex itens-center justify-between flex-col p-2'>
               <Button type="submit">Fazer Login</Button>
+              <button
+                type="button"
+                className="ml-4 text-blue-700 hover:text-blue-500"
+                onClick={() => router.push('/Cadastro')}
+              >
+                Não tem uma conta? Cadastre-se
+              </button>
+              <button
+                type="button"
+                className="ml-4 text-blue-700 hover:text-blue-500"
+                onClick={() => router.push('/RecuperarSenha')}  
+              >
+                Esqueci minha senha 
+              </button>
             </div>
+          
           </form>
         )}
 

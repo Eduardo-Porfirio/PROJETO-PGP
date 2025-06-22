@@ -160,17 +160,17 @@ function Cadastro() {
                         children: toast.message
                     }, void 0, false, {
                         fileName: "[project]/app/TESTE/page.tsx",
-                        lineNumber: 96,
+                        lineNumber: 95,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/TESTE/page.tsx",
-                    lineNumber: 95,
+                    lineNumber: 94,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/TESTE/page.tsx",
-                lineNumber: 93,
+                lineNumber: 92,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -181,7 +181,7 @@ function Cadastro() {
                         children: "Cadastro"
                     }, void 0, false, {
                         fileName: "[project]/app/TESTE/page.tsx",
-                        lineNumber: 101,
+                        lineNumber: 100,
                         columnNumber: 9
                     }, this),
                     step === 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -196,7 +196,7 @@ function Cadastro() {
                                         children: "Nome"
                                     }, void 0, false, {
                                         fileName: "[project]/app/TESTE/page.tsx",
-                                        lineNumber: 108,
+                                        lineNumber: 107,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -209,13 +209,13 @@ function Cadastro() {
                                         required: true
                                     }, void 0, false, {
                                         fileName: "[project]/app/TESTE/page.tsx",
-                                        lineNumber: 111,
+                                        lineNumber: 110,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/TESTE/page.tsx",
-                                lineNumber: 107,
+                                lineNumber: 106,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -226,7 +226,7 @@ function Cadastro() {
                                         children: "E-mail"
                                     }, void 0, false, {
                                         fileName: "[project]/app/TESTE/page.tsx",
-                                        lineNumber: 122,
+                                        lineNumber: 121,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -239,13 +239,13 @@ function Cadastro() {
                                         required: true
                                     }, void 0, false, {
                                         fileName: "[project]/app/TESTE/page.tsx",
-                                        lineNumber: 125,
+                                        lineNumber: 124,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/TESTE/page.tsx",
-                                lineNumber: 121,
+                                lineNumber: 120,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -256,7 +256,7 @@ function Cadastro() {
                                         children: "Data de nascimento"
                                     }, void 0, false, {
                                         fileName: "[project]/app/TESTE/page.tsx",
-                                        lineNumber: 136,
+                                        lineNumber: 135,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -269,13 +269,13 @@ function Cadastro() {
                                         required: true
                                     }, void 0, false, {
                                         fileName: "[project]/app/TESTE/page.tsx",
-                                        lineNumber: 139,
+                                        lineNumber: 138,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/TESTE/page.tsx",
-                                lineNumber: 135,
+                                lineNumber: 134,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -286,7 +286,7 @@ function Cadastro() {
                                         children: "Telefone"
                                     }, void 0, false, {
                                         fileName: "[project]/app/TESTE/page.tsx",
-                                        lineNumber: 150,
+                                        lineNumber: 149,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -300,13 +300,13 @@ function Cadastro() {
                                         required: true
                                     }, void 0, false, {
                                         fileName: "[project]/app/TESTE/page.tsx",
-                                        lineNumber: 153,
+                                        lineNumber: 152,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/TESTE/page.tsx",
-                                lineNumber: 149,
+                                lineNumber: 148,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -317,7 +317,7 @@ function Cadastro() {
                                         children: "Gênero"
                                     }, void 0, false, {
                                         fileName: "[project]/app/TESTE/page.tsx",
-                                        lineNumber: 165,
+                                        lineNumber: 164,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -331,7 +331,7 @@ function Cadastro() {
                                                 children: "Selecione..."
                                             }, void 0, false, {
                                                 fileName: "[project]/app/TESTE/page.tsx",
-                                                lineNumber: 172,
+                                                lineNumber: 171,
                                                 columnNumber: 17
                                             }, this),
                                             generos.map((g)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -339,19 +339,19 @@ function Cadastro() {
                                                     children: g.name
                                                 }, g.id, false, {
                                                     fileName: "[project]/app/TESTE/page.tsx",
-                                                    lineNumber: 174,
+                                                    lineNumber: 173,
                                                     columnNumber: 19
                                                 }, this))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/TESTE/page.tsx",
-                                        lineNumber: 166,
+                                        lineNumber: 165,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/TESTE/page.tsx",
-                                lineNumber: 164,
+                                lineNumber: 163,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -361,18 +361,18 @@ function Cadastro() {
                                     children: "Próxima etapa"
                                 }, void 0, false, {
                                     fileName: "[project]/app/TESTE/page.tsx",
-                                    lineNumber: 179,
+                                    lineNumber: 178,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/TESTE/page.tsx",
-                                lineNumber: 178,
+                                lineNumber: 177,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/TESTE/page.tsx",
-                        lineNumber: 106,
+                        lineNumber: 105,
                         columnNumber: 11
                     }, this),
                     step === 2 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -387,7 +387,7 @@ function Cadastro() {
                                         children: "Username"
                                     }, void 0, false, {
                                         fileName: "[project]/app/TESTE/page.tsx",
-                                        lineNumber: 187,
+                                        lineNumber: 186,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -400,13 +400,13 @@ function Cadastro() {
                                         required: true
                                     }, void 0, false, {
                                         fileName: "[project]/app/TESTE/page.tsx",
-                                        lineNumber: 190,
+                                        lineNumber: 189,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/TESTE/page.tsx",
-                                lineNumber: 186,
+                                lineNumber: 185,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -417,7 +417,7 @@ function Cadastro() {
                                         children: "Senha"
                                     }, void 0, false, {
                                         fileName: "[project]/app/TESTE/page.tsx",
-                                        lineNumber: 201,
+                                        lineNumber: 200,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -430,13 +430,13 @@ function Cadastro() {
                                         required: true
                                     }, void 0, false, {
                                         fileName: "[project]/app/TESTE/page.tsx",
-                                        lineNumber: 204,
+                                        lineNumber: 203,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/TESTE/page.tsx",
-                                lineNumber: 200,
+                                lineNumber: 199,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -447,7 +447,7 @@ function Cadastro() {
                                         children: "Confirmar Senha"
                                     }, void 0, false, {
                                         fileName: "[project]/app/TESTE/page.tsx",
-                                        lineNumber: 215,
+                                        lineNumber: 214,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -460,13 +460,13 @@ function Cadastro() {
                                         required: true
                                     }, void 0, false, {
                                         fileName: "[project]/app/TESTE/page.tsx",
-                                        lineNumber: 218,
+                                        lineNumber: 217,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/TESTE/page.tsx",
-                                lineNumber: 214,
+                                lineNumber: 213,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -477,7 +477,7 @@ function Cadastro() {
                                         children: "Voltar"
                                     }, void 0, false, {
                                         fileName: "[project]/app/TESTE/page.tsx",
-                                        lineNumber: 229,
+                                        lineNumber: 228,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Components$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -485,19 +485,19 @@ function Cadastro() {
                                         children: "Cadastrar"
                                     }, void 0, false, {
                                         fileName: "[project]/app/TESTE/page.tsx",
-                                        lineNumber: 230,
+                                        lineNumber: 229,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/TESTE/page.tsx",
-                                lineNumber: 228,
+                                lineNumber: 227,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/TESTE/page.tsx",
-                        lineNumber: 185,
+                        lineNumber: 184,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -515,29 +515,29 @@ function Cadastro() {
                                         children: "Faça login"
                                     }, void 0, false, {
                                         fileName: "[project]/app/TESTE/page.tsx",
-                                        lineNumber: 238,
+                                        lineNumber: 237,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/TESTE/page.tsx",
-                                lineNumber: 236,
+                                lineNumber: 235,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/TESTE/page.tsx",
-                            lineNumber: 235,
+                            lineNumber: 234,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/TESTE/page.tsx",
-                        lineNumber: 234,
+                        lineNumber: 233,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/TESTE/page.tsx",
-                lineNumber: 100,
+                lineNumber: 99,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("footer", {
@@ -549,13 +549,13 @@ function Cadastro() {
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/TESTE/page.tsx",
-                lineNumber: 245,
+                lineNumber: 244,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/TESTE/page.tsx",
-        lineNumber: 92,
+        lineNumber: 91,
         columnNumber: 5
     }, this);
 }

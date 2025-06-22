@@ -60,7 +60,6 @@
     --color-gray-500: oklch(55.1% .027 264.364);
     --color-gray-600: oklch(44.6% .03 256.802);
     --color-gray-700: oklch(37.3% .034 259.733);
-    --color-gray-800: oklch(27.8% .033 256.848);
     --color-gray-900: oklch(21% .034 264.665);
     --color-neutral-400: oklch(70.8% 0 0);
     --color-black: #000;
@@ -342,10 +341,6 @@
     grid-column: span 2 / span 2;
   }
 
-  .col-span-3 {
-    grid-column: span 3 / span 3;
-  }
-
   .row-span-1 {
     grid-row: span 1 / span 1;
   }
@@ -408,10 +403,6 @@
     margin-top: calc(var(--spacing) * 4);
   }
 
-  .mt-8 {
-    margin-top: calc(var(--spacing) * 8);
-  }
-
   .mt-auto {
     margin-top: auto;
   }
@@ -432,8 +423,8 @@
     margin-bottom: calc(var(--spacing) * 6);
   }
 
-  .ml-2 {
-    margin-left: calc(var(--spacing) * 2);
+  .ml-4 {
+    margin-left: calc(var(--spacing) * 4);
   }
 
   .block {
@@ -496,6 +487,10 @@
     height: 100vh;
   }
 
+  .max-h-48 {
+    max-height: calc(var(--spacing) * 48);
+  }
+
   .min-h-0 {
     min-height: calc(var(--spacing) * 0);
   }
@@ -548,10 +543,6 @@
     list-style-type: none;
   }
 
-  .grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -560,16 +551,8 @@
     grid-template-rows: repeat(1, minmax(0, 1fr));
   }
 
-  .grid-rows-2 {
-    grid-template-rows: repeat(2, minmax(0, 1fr));
-  }
-
   .grid-rows-\[100px_1fr\] {
     grid-template-rows: 100px 1fr;
-  }
-
-  .grid-rows-\[auto_1fr\] {
-    grid-template-rows: auto 1fr;
   }
 
   .flex-col {
@@ -580,10 +563,6 @@
     align-items: center;
   }
 
-  .items-end {
-    align-items: flex-end;
-  }
-
   .justify-between {
     justify-content: space-between;
   }
@@ -592,16 +571,16 @@
     justify-content: center;
   }
 
-  .justify-end {
-    justify-content: flex-end;
-  }
-
   .justify-start {
     justify-content: flex-start;
   }
 
   .gap-2 {
     gap: calc(var(--spacing) * 2);
+  }
+
+  .gap-4 {
+    gap: calc(var(--spacing) * 4);
   }
 
   :where(.space-y-2 > :not(:last-child)) {
@@ -921,10 +900,6 @@
     color: var(--color-gray-700);
   }
 
-  .text-gray-800 {
-    color: var(--color-gray-800);
-  }
-
   .text-white {
     color: var(--color-white);
   }
@@ -932,6 +907,10 @@
   .antialiased {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  .accent-blue-600 {
+    accent-color: var(--color-blue-600);
   }
 
   .shadow {
@@ -1005,14 +984,14 @@
   }
 
   @media (hover: hover) {
-    .hover\:bg-red-500:hover {
-      background-color: var(--color-red-500);
+    .hover\:text-blue-400:hover {
+      color: var(--color-blue-400);
     }
   }
 
   @media (hover: hover) {
-    .hover\:text-blue-400:hover {
-      color: var(--color-blue-400);
+    .hover\:text-blue-500:hover {
+      color: var(--color-blue-500);
     }
   }
 
