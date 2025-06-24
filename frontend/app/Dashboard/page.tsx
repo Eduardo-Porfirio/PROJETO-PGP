@@ -9,8 +9,18 @@ import { FaFolderOpen } from "react-icons/fa";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
 import { useRouter } from 'next/navigation';
 
+const REQUIRE_AUTH = true; // Altere para false para desabilitar proteção
 
 export default function DashboardPage() {
+
+    useEffect(() => {
+        if (REQUIRE_AUTH) {
+            const token = localStorage.getItem("token");
+            if (!token) {
+                router.replace("/Login");
+            }
+        }
+    }, []);
 
     const router = useRouter();
 

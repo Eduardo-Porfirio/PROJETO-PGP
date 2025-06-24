@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import SidebarHist from "@/Components/sidebarhist";
 import StickNav from "@/Components/sticknavbar";
 import Chat from "@/Components/chat";
-
+import { useEffect } from "react";
+import { useRouter } from 'next/navigation';
 interface Message {
     id: number;
     user: string;
@@ -17,6 +18,18 @@ const mockMessages: Message[] = [
 ];
 
 export default function ChatRoom() {
+    const router = useRouter();
+    const REQUIRE_AUTH = true; // Altere para false para desabilitar proteção
+
+    useEffect(() => {
+        if (REQUIRE_AUTH) {
+            const token = localStorage.getItem("token");
+            if (!token) {
+                router.replace("/Login");
+            }
+        }
+    }, []);
+
     const [messages, setMessages] = useState<Message[]>(mockMessages);
     const [input, setInput] = useState("");
 

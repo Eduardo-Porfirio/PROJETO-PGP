@@ -24,6 +24,14 @@ export default function Navbar() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  function deslogar() {
+    console.log('Deslogando...');
+    localStorage.removeItem('token');
+    localStorage.removeItem('usuario');
+    localStorage.removeItem('email');
+    window.location.href = '/Login';
+  }
+
   return (
     <nav className="bg-gray-900 text-white sticky top-0 z-50">
       <div className="px-4 py-2 flex items-center justify-between">
@@ -90,8 +98,32 @@ export default function Navbar() {
             className="z-50 absolute top-14 right-4 my-0.5 text-base list-none bg-gray-700 divide-y divide-gray-600 rounded-lg shadow-lg"
           >
             <div className="px-4 py-3">
-              <span className="block text-sm text-white">Bonnie Green</span>
-              <span className="block text-sm text-gray-400 truncate">name@flowbite.com</span>
+              {(() => {
+                let user = 'Não encontrado';
+                let email = 'Não encontrado';
+                if (typeof window !== 'undefined') {
+                  const usuarioStr = localStorage.getItem('usuario');
+                  if (usuarioStr) {
+                    try {
+                      const usuarioObj = JSON.parse(usuarioStr);
+                      user = usuarioObj.username || usuarioObj.nome || 'Não encontrado';
+                      email = usuarioObj.email || localStorage.getItem('email') || 'Não encontrado';
+                    } catch {
+                      user = usuarioStr;
+                      email = localStorage.getItem('email') || 'Não encontrado';
+                    }
+                  } else {
+                    user = 'Não encontrado';
+                    email = localStorage.getItem('email') || 'Não encontrado';
+                  }
+                }
+                return (
+                  <>
+                    <span className="block text-sm text-white">{user}</span>
+                    <span className="block text-sm text-gray-400 truncate">{email}</span>
+                  </>
+                );
+              })()}
             </div>
             <ul className="py-2">
               <li>
@@ -114,7 +146,15 @@ export default function Navbar() {
                 <Link href="#" className="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600">Configuracoes</Link>
               </li>
               <li>
-                <Link href="#" className="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600">Fazer Logout</Link>
+                <Link 
+                  href="#"
+                  className="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600"
+                  onClick={() => {
+                    deslogar();
+                  }}
+                >
+                  Fazer Logout
+                </Link>
               </li>
             </ul>
           </div>
