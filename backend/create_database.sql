@@ -17,12 +17,15 @@ create table if not exists back.user (
     email varchar(250),
     password text,
     gender int,
+    code varchar(10),
     cpf_user varchar(11),
     date_born date,
     constraint pk_user primary key (id_user),
     constraint fk_user_gender foreign key (gender) references back.gender (id)  
 );
 
+insert into back.user (name_user, cellphone, email, password) VALUES
+('Admin', '11999999999', 'duduyou13@gmail.com', '123456');
 
 create table if not exists back.room (
     id_room bigserial not null,
@@ -47,6 +50,17 @@ create table if not exists back.chat_message (
     message_text text,
     sent_at timestamp default current_timestamp,
     constraint pk_id_message primary key (id_message)
+);
+
+
+create table if not exists back.archive (
+    id_file bigserial not null,
+    id_user bigint,
+    id_room bigint,
+    file_name varchar(255),
+    file_path text,
+    uploaded_at timestamp default current_timestamp,
+    constraint pk_id_file primary key (id_file)
 );
 
 

@@ -20,8 +20,11 @@ async function verificarSenha(senha, hash) {
 }
 
 
-async function validarLogin(req, res, next) {
-  const { email, senha } = req.body;
+async function validarLogin(req, res) {
+  // Pegando os parâmetros da query string (req.query) enviados pelo axios.get
+  const email = req.query.email;
+  const senha = req.query.senha;
+
   console.log("Email:", email);
   console.log("Senha:", senha);
   try {
@@ -35,6 +38,8 @@ async function validarLogin(req, res, next) {
 
     const senhaCorreta = await compare(senha, usuario.password);
 
+    console.log(senhaCorreta);
+
     if (!senhaCorreta) {
       return res.status(401).json({ erro: 'Senha incorreta' });
     }
@@ -47,6 +52,7 @@ async function validarLogin(req, res, next) {
       mensagem: 'Login válido',
       token: token,
       usuario: {
+        username: usuario.name_user,
         id: usuario.id_user,
         email: usuario.email
       }
@@ -88,7 +94,23 @@ async function cadastrarUsuario(req, res) {
       res.status(500).json({ erro: 'Erro no servidor' });
     }
 
+  }
+
+async function  getUsers(req, res) {
+  console.log("Pegando usuários");
+  try {
+    const result = await pool.query('SELECT id_user, name_user, email FROM back.user');
+    const usuarios = result.rows.map((usuario) => ({
+      id: usuario.id_user,
+      nome: usuario.name_user,
+      email: usuario.email
+    }));
+    return res.status(200).json(usuarios);
+  } catch (error) {
+    console.error('Erro ao buscar usuários:', error);
+    return res.status(500).json({ erro: 'Erro interno do servidor' });
+  }
 }
 
 
-export default { validarLogin, cadastrarUsuario, verificarSenha };
+export default { validarLogin, cadastrarUsuario, verificarSenha, getUsers };
