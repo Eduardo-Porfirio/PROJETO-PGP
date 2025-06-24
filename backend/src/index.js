@@ -38,6 +38,9 @@ app.post('/send_message',(req,res)=> mensagem.enviarMensagem(req,res));
 
 app.get('/messages', (req, res) => chat.buscar_mensagens(req, res));
 
+app.get('/usuarioid',(req,res)=> usuario.getUserById(req,res));
+
+app.put('/usuario', (req, res) => usuario.updateUser(req, res));
 
 app.post("/load-file", async (req, res) => {
   const { filename } = req.body;

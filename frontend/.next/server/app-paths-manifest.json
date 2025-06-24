@@ -1,6 +1,5 @@
 {
   "/Cadastro/page": "app/Cadastro/page.js",
-  "/Chat/page": "app/Chat/page.js",
   "/CriarSala/page": "app/CriarSala/page.js",
   "/Dashboard/page": "app/Dashboard/page.js",
   "/Login/page": "app/Login/page.js",

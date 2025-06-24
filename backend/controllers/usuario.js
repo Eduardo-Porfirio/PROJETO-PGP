@@ -4,6 +4,7 @@ const saltRounds = 10;
 import pool from '../banco.js';
 import jwt from "jsonwebtoken";
 const secret = process.env.SECRET_KEY || 'seu_segredo_aqui';
+import iduser from './chat.js';
 
 function formatarDataParaSQL(dataBr) {
   console.log("Data recebida:", dataBr);
@@ -86,7 +87,7 @@ async function cadastrarUsuario(req, res) {
 
     try {
       const result = await pool.query('INSERT INTO back.user(name_user,cellphone,email,password,gender,cpf_user,date_born)values($1,$2,$3,$4,$5,$6,$7);',
-        [req.body.nome, req.body.telefone, req.body.email, hash, req.body.genero, req.body.cpf, nascimentoSql]
+        [req.body.nome, req.body.celular, req.body.email, hash, req.body.genero, req.body.cpf, nascimentoSql]
       );
       res.status(200).json({ "Status": "Sucesso" });
     } catch (err) {
@@ -96,8 +97,7 @@ async function cadastrarUsuario(req, res) {
 
   }
 
-async function  getUsers(req, res) {
-  console.log("Pegando usuários");
+async function getUsers(req, res) {  
   try {
     const result = await pool.query('SELECT id_user, name_user, email FROM back.user');
     const usuarios = result.rows.map((usuario) => ({
@@ -112,5 +112,60 @@ async function  getUsers(req, res) {
   }
 }
 
+async function getUserById(req, res) {
+  const { id } = await iduser.id_user_token(req.query.token);
+  console.log(`Buscando usuário com ID: ${id}`);
+  
+  try {
+    const result = await pool.query('SELECT id_user, name_user, email,cellphone FROM back.user WHERE id_user = $1', [id]);
+    
+    if (result.rows.length === 0) {
+      return res.status(404).json({ erro: 'Usuário não encontrado' });
+    }
 
-export default { validarLogin, cadastrarUsuario, verificarSenha, getUsers };
+    const usuario = {
+      id: result.rows[0].id_user,
+      nome: result.rows[0].name_user,
+      email: result.rows[0].email,
+      celular: result.rows[0].cellphone
+    };
+
+    return res.status(200).json(usuario);
+  } catch (error) {
+    console.error('Erro ao buscar usuário:', error);
+    return res.status(500).json({ erro: 'Erro interno do servidor' });
+  }
+}
+
+async function updateUser(req, res) {
+  const { id } = await iduser.id_user_token(req.body.token);
+  const { nome, email } = req.body; // Obtém os campos a serem atualizados do corpo da requisição
+  console.log(`Atualizando usuário com ID: ${id}`);
+  try {
+    // Verifica se o usuário existe
+    const userCheck = await pool.query('SELECT id_user FROM back.user WHERE id_user = $1', [id]);
+    if (userCheck.rows.length === 0) {
+      return res.status(404).json({ erro: 'Usuário não encontrado' });
+    }
+
+    // Atualiza os campos fornecidos
+    const result = await pool.query(
+      'UPDATE back.user SET name_user = COALESCE($1, name_user), email = COALESCE($2, email) WHERE id_user = $3 RETURNING id_user, name_user, email',
+      [nome, email, id]
+    );
+
+    const usuarioAtualizado = {
+      id: result.rows[0].id_user,
+      nome: result.rows[0].name_user,
+      email: result.rows[0].email
+    };
+
+    return res.status(200).json({ mensagem: 'Usuário atualizado com sucesso', usuario: usuarioAtualizado });
+  } catch (error) {
+    console.error('Erro ao atualizar usuário:', error);
+    return res.status(500).json({ erro: 'Erro interno do servidor' });
+  }
+}
+
+
+export default { validarLogin, cadastrarUsuario, verificarSenha, getUsers,getUserById,updateUser};

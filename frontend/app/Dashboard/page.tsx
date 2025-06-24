@@ -7,6 +7,7 @@ import { FaClockRotateLeft } from "react-icons/fa6";
 import { FaUserAlt } from "react-icons/fa";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
 import { useRouter } from 'next/navigation';
+import axios from 'axios';
 
 const REQUIRE_AUTH = true; // Altere para false para desabilitar proteção
 
@@ -25,6 +26,58 @@ export default function DashboardPage() {
 
     const [salas, setSalas] = useState([]);
     const [arquivos, setArquivos] = useState<string[]>([]);
+    const [showPopup, setShowPopup] = useState(false);
+    const [userData, setUserData] = useState({ nome: '', email: '', celular: '' });
+
+    const handleEditProfile = async () => {
+        try {
+            const token = localStorage.getItem('token'); // Obtém o token do localStorage
+            const response = await axios.get('http://localhost:3001/usuarioid', {
+                params: { token }, // Envia o token como parâmetro de consulta
+            });
+            setUserData({
+                nome: response.data.nome,
+                email: response.data.email,
+                celular: response.data.celular, // Adiciona o campo celular
+            });
+            setShowPopup(true); // Exibe o pop-up
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                console.error('Erro ao buscar dados do usuário:', error.response || error.message);
+            } else {
+                console.error('Erro ao buscar dados do usuário:', error);
+            }
+            alert('Erro ao buscar os dados do usuário. Tente novamente.');
+        }
+    };
+
+    const handleSaveChanges = async (e: React.FormEvent) => {
+        e.preventDefault();
+        try {
+            const token = localStorage.getItem('token'); // Obtém o token do localStorage
+            const response = await axios.put('http://localhost:3001/usuario', {
+                token, // Envia o token no corpo
+                nome: userData.nome,
+                email: userData.email,
+                celular: userData.celular, // Adiciona o campo celular
+            });
+            console.log('Usuário atualizado:', response.data);
+            alert('Dados atualizados com sucesso!');
+            setShowPopup(false); // Fecha o pop-up após salvar
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                console.error('Erro ao atualizar dados do usuário:', error.response || error.message);
+            } else {
+                console.error('Erro ao atualizar dados do usuário:', error);
+            }
+            alert('Erro ao atualizar os dados. Tente novamente.');
+        }
+    };
+
+    const closePopup = () => {
+        setShowPopup(false);
+    };
+
     // Mock data para o gráfico de barras
     const mockData = [
         { date: "2025-06-20", salas: 2 },
@@ -83,7 +136,10 @@ export default function DashboardPage() {
                         </h2>
                         <p className="text-gray-700">Aqui você pode ver suas informações e gerenciar sua conta.</p>
                         <div className="mt-4">
-                            <button className="w-full hover:bg-gray-200 text-black font-bold py-2 px-4 rounded-lg shadow focus:outline-none focus:shadow-outline">
+                            <button
+                                className="w-full hover:bg-gray-200 text-black font-bold py-2 px-4 rounded-lg shadow focus:outline-none focus:shadow-outline"
+                                onClick={handleEditProfile}
+                            >
                                 <FaPen className="inline-block mr-2" />
                                 Editar Perfil
                             </button>
@@ -122,6 +178,58 @@ export default function DashboardPage() {
                     </div> 
                 </div>
             </div>
+            {/* Pop-up */}
+            {showPopup && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+            <div className="bg-white p-6 rounded-lg shadow-lg w-96">
+                <h2 className="text-xl font-semibold mb-4">Editar Perfil</h2>
+                <form onSubmit={handleSaveChanges}>
+                    <div className="mb-4">
+                        <label className="block text-sm font-medium text-gray-700">Nome</label>
+                        <input
+                            type="text"
+                            value={userData.nome}
+                            onChange={e => setUserData({ ...userData, nome: e.target.value })}
+                            className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-sm font-medium text-gray-700">Email</label>
+                        <input
+                            type="email"
+                            value={userData.email}
+                            onChange={e => setUserData({ ...userData, email: e.target.value })}
+                            className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-sm font-medium text-gray-700">Celular</label>
+                        <input
+                            type="tel"
+                            value={userData.celular}
+                            onChange={e => setUserData({ ...userData, celular: e.target.value })}
+                            className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                    </div>
+                    <div className="flex justify-end">
+                        <button
+                            type="button"
+                            onClick={closePopup}
+                            className="mr-2 px-4 py-2 bg-gray-300 rounded-lg"
+                        >
+                            Cancelar
+                        </button>
+                        <button
+                            type="submit"
+                            className="px-4 py-2 bg-blue-500 text-white rounded-lg"
+                        >
+                            Salvar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    )}
         </main>
     );
 }
