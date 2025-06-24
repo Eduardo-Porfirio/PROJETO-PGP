@@ -102,7 +102,8 @@ async function rooms_user(req,res){
 }
 
 async function buscar_mensagens(req, res) {
-  const { id_room,token } = req.body;
+  console.log(req.query);
+  const { id_room,token } = req.query;
   const {id} = await id_user_token(token);
 
   try {

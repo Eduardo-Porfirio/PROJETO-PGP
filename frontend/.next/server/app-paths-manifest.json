@@ -1,7 +1,10 @@
 {
+  "/Cadastro/page": "app/Cadastro/page.js",
+  "/Chat/page": "app/Chat/page.js",
   "/CriarSala/page": "app/CriarSala/page.js",
   "/Dashboard/page": "app/Dashboard/page.js",
+  "/Login/page": "app/Login/page.js",
   "/_not-found/page": "app/_not-found/page.js",
-  "/api/arquivos/route": "app/api/arquivos/route.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js"
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/page": "app/page.js"
 }

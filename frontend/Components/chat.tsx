@@ -7,9 +7,14 @@ type Message = {
     timestamp: string;
 };
 
-export default function Chat() {
-    const [messages, setMessages] = useState<Message[]>([]);
-    const [input, setInput] = useState("");
+interface ChatProps {
+    messages: Message[];
+    input: string;
+    setInput: (text: string) => void;
+    onSend: () => void;
+}
+
+export default function Chat({ messages, input, setInput, onSend }: ChatProps) {
 
     return (
         <div className="bg-white shadow-2xl p-4 rounded-2xl h-screen overflow-hidden flex flex-col">
