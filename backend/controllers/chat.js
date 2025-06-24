@@ -18,34 +18,57 @@ async function id_user_token(token) {
 
 
 async function createRoom(req, res) {
-  const { name_room, description,token,user} = req.body;
-  const {id} = await id_user_token(token);
+  const { name_room, description, token, user } = req.body;
+  const { id } = await id_user_token(token);
 
   console.log("id " + id);
   console.log("name_room " + name_room);
   console.log("description " + description);
-  try{
+  try {
     const create = await pool.query(`insert into back.room(name_room,description,admin_id)
                                values 
                                ($1,$2,$3)
                                RETURNING id_room;
-                             `,[name_room,description,id]); 
-    for(const users of user){
-      await pool.query(
-        `INSERT INTO back.user_room (id_user, id_room) VALUES ($1, $2)`,
-        [users.id_user, create.rows[0].id_room]
-      );
-    }  
-    res.status(200).json({ Status: "Sucesso", Room: name_room , Id_room: create.rows[0].id_room});                         
-    
+                             `, [name_room, description, id]);
+    // Garantir que user seja um array antes de iterar
+    if (Array.isArray(user)) {
+      for (const users of user) {
+        await pool.query(
+          `INSERT INTO back.user_room (id_user, id_room) VALUES ($1, $2)`,
+          [users.id_user, create.rows[0].id_room]
+        );
+      }
+    } else {
+      console.warn('O campo user não é um array:', user);
+    }
+    res.status(200).json({ Status: "Sucesso", Room: name_room, Id_room: create.rows[0].id_room });
 
-  }catch(erro){
+  } catch (erro) {
     console.error('Erro ao criar sala:', erro);
     res.status(500).json({ erro: 'Erro no servidor' });
   }
-  
-}
 
+}
+/**
+ * Adiciona suporte para quando "user" for um único objeto, além de array.
+ */
+async function addUsersToRoom(user, id_room) {
+  if (Array.isArray(user)) {
+    for (const users of user) {
+      await pool.query(
+        `INSERT INTO back.user_room (id_user, id_room) VALUES ($1, $2)`,
+        [users.id_user, id_room]
+      );
+    }
+  } else if (user && typeof user === 'object' && user.id_user) {
+    await pool.query(
+      `INSERT INTO back.user_room (id_user, id_room) VALUES ($1, $2)`,
+      [user.id_user, id_room]
+    );
+  } else {
+    console.warn('O campo user não é válido:', user);
+  }
+}
 async function return_user(req,res){
   try{
     const users = await pool.query (`

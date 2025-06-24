@@ -7,8 +7,6 @@ import cors from 'cors';
 import retrieveInfo from '../controllers/retrieveInfo.js';
 import mensagem from '../controllers/mensagem.js';
 
-
-
 const app = express();
 
 app.use(cors());
@@ -35,6 +33,8 @@ app.get('/user_room',(req,res)=> chat.return_user(req,res));
 app.get('/rooms',(req,res)=> chat.rooms_user(req,res));
 //Endpoint para mandar mensagem
 app.post('/send_message',(req,res)=> mensagem.enviarMensagem(req,res));
+
+app.post('/upload', upload, uploadFile);
 
 app.get('/messages', (req, res) => chat.buscar_mensagens(req, res));
 
