@@ -27,6 +27,9 @@ create table if not exists back.user (
 insert into back.user (name_user, cellphone, email, password) VALUES
 ('Admin', '11999999999', 'duduyou13@gmail.com', '123456');
 
+insert into back.user (name_user, cellphone, email, password) VALUES
+('IA', '11999999999', 'iadosgurizes@gmail.com', '123456');
+
 create table if not exists back.room (
     id_room bigserial not null,
     name_room varchar(150),

@@ -100,5 +100,29 @@ async function rooms_user(req,res){
   }
 }
 
+async function buscar_mensagens(req, res) {
+  const { id_room,token } = req.body;
+  const {id} = await id_user_token(token);
 
-export default {id_user_token,createRoom,inserirUsers,return_user,rooms_user};
+  try {
+    const mensagens = await pool.query(`
+      SELECT m.id_message, m.message_text, m.sent_at, u.name_user 
+      FROM back.chat_message m
+      JOIN back.user u ON m.sender_id = u.id_user
+      WHERE m.id_room = $1 and m.sender_id in ($2,2) 
+      ORDER BY m.id_message DESC
+      LIMIT 9;
+    `, [id_room, id]);
+
+    // Ordena do mais antigo para o mais recente
+    console.log('Mensagens encontradas:', mensagens);
+    const mensagensOrdenadas = mensagens.rows.reverse();
+
+    res.status(200).json({ Status: "Sucesso", Messages: mensagensOrdenadas });
+  } catch (err) {
+    console.error('Erro ao buscar mensagens:', err);
+    res.status(500).json({ erro: 'Erro no servidor' });
+  }
+}
+
+export default {id_user_token,createRoom,inserirUsers,return_user,rooms_user,buscar_mensagens};
