@@ -118,7 +118,7 @@ export default function CadastroSala() {
         console.log('Enviando para o backend:', payload); // <-- Aqui imprime o que será enviado
         try {
             console.log(payload)
-            const response = await axios.post('http://localhost:3001/Create_room', payload);
+            const response = await axios.post('http://localhost:3001/room', payload);
             console.log(response.data);
             if (response.status === 200) {
                 alert('Sala criada com sucesso!');

@@ -5,6 +5,7 @@ import StickNav from "@/Components/sticknavbar";
 import Chat from "@/Components/chat";
 import { useEffect } from "react";
 import { useRouter } from 'next/navigation';
+import axios from "axios";
 interface Message {
     id: number;
     user: string;
@@ -32,7 +33,14 @@ export default function ChatRoom() {
 
     const [messages, setMessages] = useState<Message[]>(mockMessages);
     const [input, setInput] = useState("");
-
+    const RecuperaMensagem = async () => {
+        try {
+            const response = await axios.get('http://localhost:3001/messages');
+            setMessages(response.data);
+        } catch (error) {
+            console.error("Erro ao buscar mensagens:", error);
+        }
+    };
     const handleSend = () => {
         if (!input.trim()) return;
         const newMessage: Message = {
