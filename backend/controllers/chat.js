@@ -3,7 +3,7 @@ import pool from '../banco.js';
 
 const secret = process.env.SECRET_KEY || 'seu_segredo_aqui';
 
-function id_user_token(token) {
+async function id_user_token(token) {
   try {
     const decoded = jwt.verify(token, secret);
     console.log('ID do usuário:', decoded.id);
@@ -19,7 +19,7 @@ function id_user_token(token) {
 
 async function createRoom(req, res) {
   const { name_room, description,token,user} = req.body;
-  const {id} = id_user_token(token);
+  const {id} = await id_user_token(token);
 
   console.log("id " + id);
   console.log("name_room " + name_room);
@@ -101,4 +101,4 @@ async function rooms_user(req,res){
 }
 
 
-export default {createRoom,inserirUsers,return_user,rooms_user};
+export default {id_user_token,createRoom,inserirUsers,return_user,rooms_user};

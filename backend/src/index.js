@@ -5,9 +5,12 @@ import chat from '../controllers/chat.js';
 import { upload, uploadFile } from '../controllers/upload.js';
 import cors from 'cors';
 import retrieveInfo from '../controllers/retrieveInfo.js';
+<<<<<<< HEAD
 import recuperasenha from '../controllers/recuperasenha.js';
+=======
+import mensagem from '../controllers/mensagem.js';
+>>>>>>> 98a423a (Mensagem do commit)
 
-//import configurePassport from '../config/passport.js';
 
 const app = express();
 
@@ -33,6 +36,7 @@ app.post('/room',(req,res)=> chat.createRoom(req,res));
 app.get('/user_room',(req,res)=> chat.return_user(req,res));
 //Endpoint para retornar as salas de um usuario
 app.get('/rooms',(req,res)=> chat.rooms_user(req,res));
+<<<<<<< HEAD
 //Endpoint de arquivos
 app.post('/upload', upload, uploadFile);
 // Rota de upload de arquivos
@@ -42,6 +46,23 @@ app.post('/recuperasenha', (req, res) => recuperasenha.recuperarSenha(req, res))
 app.post('/update_senha', (req, res) => recuperasenha.update_senha(req, res));
 
 app.get('/users', (req, res) => usuario.getUsers(req, res));
+=======
+//Endpoint para mandar mensagem
+app.post('/send_message',(req,res)=> mensagem.enviarMensagem(req,res));
+
+app.post("/load-file", async (req, res) => {
+  const { filename } = req.body;
+  const resultado = await mensagem.carregarArquivo(filename);
+
+  console.log("Resultado do carregamento:", resultado);
+
+  if (!resultado.success) {
+    return res.status(400).json({ erro: resultado.message });
+  }
+
+  res.json({ message: resultado.message });
+}); 
+>>>>>>> 98a423a (Mensagem do commit)
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
