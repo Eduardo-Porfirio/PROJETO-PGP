@@ -8,6 +8,7 @@ a
 backend/node_modules
 frontend/node_modules
 backend/uploads
+frontend/.next
 /.pnp
 .pnp.*
 .yarn/*

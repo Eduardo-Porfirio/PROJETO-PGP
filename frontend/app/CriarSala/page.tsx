@@ -122,7 +122,8 @@ export default function CadastroSala() {
             console.log(response.data);
             if (response.status === 200) {
                 alert('Sala criada com sucesso!');
-                router.push(`/Chat:${response.data.id}`); // Redireciona para a sala criada
+                console.log("Sala:", response.data.Id_room)
+                router.push(`/Chat/${response.data.Id_room}`); // Redireciona para a sala criada
             } else {
                 alert('Erro ao criar sala. Tente novamente.');
             }

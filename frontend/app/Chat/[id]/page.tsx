@@ -6,6 +6,10 @@ import Chat from "@/Components/chat";
 import { useEffect } from "react";
 import { useRouter } from 'next/navigation';
 import axios from "axios";
+import {useParams} from 'next/navigation'
+//const params  = useParams();
+
+//const id_room = params.id_room;
 interface Message {
     id: number;
     user: string;
@@ -21,8 +25,9 @@ const mockMessages: Message[] = [
 
 export default function ChatRoom() {
     const router = useRouter();
+    const params  = useParams();
     const REQUIRE_AUTH = true; // Altere para false para desabilitar proteção
-
+    const id_room = params.id as string;
     useEffect(() => {
         if (REQUIRE_AUTH) {
             const token = localStorage.getItem("token");
@@ -32,19 +37,45 @@ export default function ChatRoom() {
         }
     }, []);
 
-    const handleSend = () => {
-        if (!input.trim()) return;
+const handleSend = async () => {
+    if (!input.trim()) return;
 
-        const newMessage: Message = {
-            id: messages.length + 1,
-            user: "Você",
-            content: input,
-            timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
-        };
-
-        setMessages([...messages, newMessage]);
-        setInput("");
+    const token = localStorage.getItem("token");
+    const id_room = params.id as string;; // substitua conforme necessário
+    const newMessage: Message = {
+        id: messages.length + 1,
+        user: "Você",
+        content: input,
+        timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
     };
+
+    setMessages([...messages, newMessage]);
+    setInput("");
+
+    try {
+        const response = await axios.post('http://localhost:3001/send_message', {
+            token,
+            id_room,
+            message: input
+        });
+
+        // Exibe a mensagem enviada na tela imediatamente
+        console.log("Resposta:", response);
+        // Se quiser também mostrar a resposta da IA, você pode usar:
+        if (response.data?.resposta) {
+            const iaMessage: Message = {
+                id: messages.length + 2,
+                user: "IA",
+                content: response.data.resposta,
+                timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+            };
+            setMessages(prev => [...prev, iaMessage]);
+        }
+
+    } catch (error) {
+        console.error("Erro ao enviar mensagem:", error);
+    }
+};
 
     const [messages, setMessages] = useState<Message[]>(mockMessages);
     const [input, setInput] = useState("");
@@ -58,7 +89,7 @@ export default function ChatRoom() {
     }, []);
     const RecuperaMensagem = async () => {
         const token = localStorage.getItem("token");
-        const id_room = "1"; // substitua pelo id correto da sala
+        const id_room = params.id as string;; 
         console.log("Cheguei aqui!");
 
         try {

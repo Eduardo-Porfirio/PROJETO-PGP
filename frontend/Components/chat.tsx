@@ -43,6 +43,7 @@ export default function Chat({ messages, input, setInput, onSend }: ChatProps) {
                         onChange={e => setInput(e.target.value)}
                     />
                     <button
+                        onClick={onSend}
                         className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-500 flex items-center"
                     >
                         <IoSend className="inline-block mr-2" />

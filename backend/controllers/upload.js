@@ -1,12 +1,16 @@
 import multer from 'multer';
 import path from 'path';
 import pool from '../banco.js';
+import { fileURLToPath } from 'url';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Configuração do armazenamento
 const storage = multer.diskStorage({
   destination: (_, __, cb) => {
-    cb(null, 'uploads/');
+    const arquivosPath = path.resolve(__dirname, '../chat-gpt-api/arquivos');
+    cb(null, arquivosPath);
   },
   filename: (_, file, cb) => {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
