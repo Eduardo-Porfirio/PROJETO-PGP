@@ -51,6 +51,7 @@ async function return_user(req,res){
     const users = await pool.query (`
           SELECT id_user,name_user 
             FROM back.user 
+          where id_user != 2
           order by name_user asc  ;
 
       `);

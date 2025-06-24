@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 export default function Navbar() {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const [showSobreText, setShowSobreText] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   useEffect(() => {
@@ -42,7 +43,7 @@ export default function Navbar() {
         </div>
 
         {/* Itens do Menu (Centralizado) */}
-        <div  className={`${isMenuOpen ? 'flex' : 'hidden'} md:flex items-center justify-center`}>
+        <div className={`${isMenuOpen ? 'flex' : 'hidden'} md:flex items-center justify-center`}>
           <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 md:flex-row md:space-x-6 md:mt-0">
             <li>
               <Link href="#" className="block py-2 px-3 text-blue-400 hover:text-white">
@@ -50,21 +51,49 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <button className="block py-2 px-3 hover:text-blue-400"
-                onClick={() => router.push('/Sobre')}
+              <button
+                className="block py-2 px-3 hover:text-blue-400"
+                onClick={() => setShowSobreText(true)}
               >
                 Sobre
               </button>
             </li>
-            <li>
-              <button className="block py-2 px-3 hover:text-blue-400"
-                onClick={() => router.push('/Servicos')}
-              >
-                Servicos
-              </button>
-            </li>
           </ul>
         </div>
+
+        {/* Modal Sobre */}
+        {showSobreText && (
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50">
+            <div className="bg-gray-800 text-white p-6 rounded-lg shadow-lg max-w-md w-full relative">
+              <button
+                className="absolute top-2 right-2 text-gray-400 hover:text-white"
+                onClick={() => setShowSobreText(false)}
+                aria-label="Fechar"
+              >
+                ×
+              </button>
+              <h2 className="text-2xl font-bold mb-2">Sobre o Guia-IA</h2>
+              <p className="mb-2">
+                O <span className="font-semibold text-blue-400">Guia-IA</span> é uma ferramenta desenvolvida para auxiliar usuários a tirar dúvidas e compreender melhor arquivos enviados para a Inteligência Artificial.
+              </p>
+              <p className="mb-2">
+                Nosso objetivo é tornar o uso da IA mais acessível, fornecendo explicações claras e suporte para diferentes tipos de arquivos.
+              </p>
+              <p className="mb-2">
+                Esta ferramenta foi criada por Wellinton, Eduardo, Paulo e Bruno, alunos da <span className="font-semibold">UFFS</span>.
+              </p>
+              <p>
+                Conte conosco para facilitar sua experiência com IA!
+              </p>
+              <button
+                className="mt-4 px-4 py-2 bg-blue-600 rounded hover:bg-blue-700"
+                onClick={() => window.location.href = 'http://localhost:3000/Dashboard'}
+              >
+                Home
+              </button>
+            </div>
+          </div>
+        )}
 
         {/* Dropdown do Usuário e Botão Mobile (Direita) */}
         <div className="flex items-center space-x-3">
@@ -141,9 +170,6 @@ export default function Navbar() {
                   Criar Sala
                 </button>
               </li>
-              </li>
-              <li>
-                <Link href="#" className="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600">Configuracoes</Link>
               </li>
               <li>
                 <Link 

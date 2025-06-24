@@ -134,7 +134,7 @@ export default function CadastroSala() {
 
     // Busca usuários para seleção na criação da sala
     React.useEffect(() => {
-        axios.get('http://localhost:3001/users')
+        axios.get('http://localhost:3001/user_room')
             .then(response => {
                 const responseData = response.data;
                 // Se o backend retorna { lista: [...] }

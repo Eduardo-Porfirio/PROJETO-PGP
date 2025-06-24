@@ -5,7 +5,6 @@ import React, { useEffect, useState } from "react";
 import { FaPen } from "react-icons/fa";
 import { FaClockRotateLeft } from "react-icons/fa6";
 import { FaUserAlt } from "react-icons/fa";
-import { FaFolderOpen } from "react-icons/fa";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
 import { useRouter } from 'next/navigation';
 
@@ -25,6 +24,7 @@ export default function DashboardPage() {
     const router = useRouter();
 
     const [salas, setSalas] = useState([]);
+    const [arquivos, setArquivos] = useState<string[]>([]);
     // Mock data para o gráfico de barras
     const mockData = [
         { date: "2025-06-20", salas: 2 },
@@ -49,6 +49,11 @@ export default function DashboardPage() {
             // SetRecentes(data);
         };
         // fetchRecentData(); // Descomente esta linha para realmente buscar os dados
+    }, []);
+    useEffect(() => {
+        fetch('/api/arquivos')
+            .then(res => res.json())
+            .then(data => setArquivos(data.files || []));
     }, []);
     return (
         <main>
@@ -83,15 +88,11 @@ export default function DashboardPage() {
                                 Editar Perfil
                             </button>
                             <button 
-                            className="w-full hover:bg-gray-200 text-black font-bold py-2 px-4 rounded-lg shadow focus:outline-none focus:shadow-outline"
-                            onClick={() => router.push('/CriarSala')}
+                                className="w-full hover:bg-gray-200 text-black font-bold py-2 px-4 rounded-lg shadow focus:outline-none focus:shadow-outline"
+                                onClick={() => router.push('/CriarSala')}
                             >
                                 <IoMdChatbubbles className="inline-block mr-2" />
                                 Novo chat
-                            </button>
-                            <button className="w-full hover:bg-gray-200 text-black font-bold py-2 px-4 rounded-lg shadow focus:outline-none focus:shadow-outline">
-                                <FaFolderOpen className="inline-block mr-2" />
-                                Gerenciar arquivos
                             </button>
                         </div>
                     </div>
